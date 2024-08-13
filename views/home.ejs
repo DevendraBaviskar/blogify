@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <title>Blogging website</title>
+  </head>
+  <body>
+    <%- include("./partials/nav") %>
+    <div class="container mt-3">
+      <h1>Home page</h1>
+      <div class="mb-4">
+        <form action="/blog/user" method="post">
+          <label for="userId">Enter your userId here</label>
+          <input type="text" name="userId" id="userId" placeholder="" />
+          <input type="submit" value="Search" />
+        </form>
+      </div>
+      <% blogs.forEach(blog => { %>
+      <div class="card mb-3" style="width: 18rem">
+        <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><%= blog.title %></h5>
+          <div><%= blog.createdBy.fullname %></div>
+          <pre class="card-text"><%= blog.body %></pre>
+          <a href="/blog/single/<%=blog._id %>" class="btn btn-primary">View</a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <%- include("./partials/script") %> <
+  </body>
+</html>

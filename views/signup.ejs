@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <title>Form</title>
+  </head>
+  <body>
+    <%- include("./partials/nav") %>
+    <div class="container">
+      <form action="/user/signup" method="post">
+        <div class="mb-3">
+          <label for="fullname" class="form-label">Full Name</label>
+          <label
+            for="fullname"
+            class="form-label"
+            style="
+              color: red;
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+                sans-serif;
+              font-weight: bold;
+              font-size: 12px;
+            "
+            ><% if (locals.fullnameErr) { %> <%= fullnameErr %> <% } %></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="fullname"
+            name="fullname"
+            aria-describedby="fullname"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            type="text"
+            name="email"
+            class="form-control"
+            id="email"
+            aria-describedby="email"
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <a
+        href="/user/signin"
+        style="
+          background-color: orangered;
+          position: relative;
+          left: 100px;
+          bottom: 30px;
+          padding: 10px;
+          border-radius: 6px;
+          font-weight: 400;
+          color: white;
+          text-decoration: none;
+        "
+        >Signin</a
+      >
+    </div>
+    <%-include("./partials/script") %>
+  </body>
+</html>

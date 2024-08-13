@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <title>Blogging website</title>
+  </head>
+  <body>
+    <%- include("./partials/nav") %>
+    <div class="container mt-3">
+      <h3>Name : <%= user.fullname %></h3>
+      <h4>Email : <%= user.email %></h4>
+      <img
+        src="/images/avatar.png"
+        style="height: 100px; width: 100px"
+        alt="profileImage"
+      />
+      <% if (blogs.length > 0) { %> <% blogs.forEach(blog => { %>
+      <div class="container">
+        <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><%= blog.title %></h5>
+          <pre class="card-text"><%= blog.body %></pre>
+        </div>
+      </div>
+      <% }) %> <% if (blogs.length === 1) { %>
+      <div class="card" style="width: 18rem">
+        <img src="<%= blogs.coverImageURL %>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><%= blogs.title %></h5>
+          <pre class="card-text"><%= blogs.body %></pre>
+        </div>
+      </div>
+      <% } %>
+      <!--? else Statement -->
+      <% } else { %>
+      <p>No blog found!</p>
+      <% } %>
+    </div>
+
+    <%- include("./partials/script") %>
+  </body>
+</html>
